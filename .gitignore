@@ -1,11 +1,11 @@
-dir/.idea/
+.idea/
 *.iml
 .out/
 *.class
 Thumbs.db
 .DS_store
 *.xml
-dir/mvnw
-dir/mvnw.cmd
-dir/.mvn
+mvnw
+mvnw.cmd
+.mvn
 dir/
