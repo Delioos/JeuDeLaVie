@@ -1,6 +1,6 @@
 package com.example.jeudelavie;
 
-import Modele.Board;
+import com.example.jeudelavie.Modele.Board;
 
 public class ModelTest {
     public static void main(String[] args) {
