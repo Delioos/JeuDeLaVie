@@ -66,5 +66,6 @@ public class View extends BorderPane {
             }
         }
         this.lbl.setText("nb evol: " + this.board.getNbIter());
+    this.requestFocus();
     }
 }

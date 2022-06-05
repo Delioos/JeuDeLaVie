@@ -18,6 +18,5 @@ public class BtnRndmCTRL implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         this.board.random();
         this.view.update();
-        this.view.requestFocus();
     }
 }

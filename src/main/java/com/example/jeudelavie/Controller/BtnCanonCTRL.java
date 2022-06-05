@@ -26,6 +26,5 @@ public class BtnCanonCTRL implements EventHandler<ActionEvent> {
             throw new RuntimeException(e);
         }
         this.view.update();
-        this.view.requestFocus();
     }
 }

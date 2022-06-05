@@ -17,6 +17,7 @@ public class KeyCTRL implements EventHandler<KeyEvent> {
     public void handle(KeyEvent event) {
         switch(event.getCode()){
             case SPACE,ENTER -> this.board.evolve();
+            case R -> this.board.clear();
         }
         this.view.update();
     }

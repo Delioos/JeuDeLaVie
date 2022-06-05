@@ -20,6 +20,15 @@ public class Board {
         }
     }
 
+    public void clear(){
+        for (int i = 0; i < getXlength(); i++) {
+            for (int j = 0; j < getYlength(); j++) {
+                this.grid[i][j] = false;
+            }
+        }
+        nbIter = 0;
+    }
+
 
     // line to inverse a case : this.setGrid(i,j,!this.getGrid(x,y));
     public void evolve() {
