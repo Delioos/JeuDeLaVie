@@ -50,10 +50,13 @@ public class View extends BorderPane {
         Button random = new Button("randomize");
         random.setOnAction(new BtnRndmCTRL(this.board,this));
         random.setMinHeight(Constantes.BUTTON_SIZE);
-        Button canon = new Button("Gosper Glider Gun");
-        canon.setOnAction(new BtnCanonCTRL(this.board,this, "src/canonGosper.txt"));
-        canon.setMinHeight(Constantes.BUTTON_SIZE);
-        hb.getChildren().addAll(lbl,random,canon);
+        Button gosperGliderGun = new Button("Gosper Glider Gun");
+        gosperGliderGun.setOnAction(new BtnCanonCTRL(this.board,this, "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\canonGosper.txt"));
+        gosperGliderGun.setMinHeight(Constantes.BUTTON_SIZE);
+        Button simkinGliderGun = new Button("Simkin Glider Gun");
+        simkinGliderGun.setOnAction(new BtnCanonCTRL(this.board,this, "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\SimkinGliderGun.txt"));
+        simkinGliderGun.setMinHeight(Constantes.BUTTON_SIZE);
+        hb.getChildren().addAll(lbl,random,gosperGliderGun,simkinGliderGun);
 
     }
     public void update(){

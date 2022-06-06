@@ -102,10 +102,11 @@ public class Board {
         //initialisation des variables du labyrinthe rendu
         for (int i = 0; i < x; i++) {
             String ligne = br.readLine();
+            System.out.println(ligne);
+            System.out.println(i);
             for (int j = 0; j < y; j++) {
                 char c = ligne.charAt(j);
-                if (c == 'o')
-                    this.grid[i][j] = true;
+                this.grid[j][i] = c == 'o';
             }
         }
     }
