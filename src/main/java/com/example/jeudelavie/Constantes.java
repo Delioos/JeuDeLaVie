@@ -8,5 +8,5 @@ public class Constantes {
     public static final int CASE_SIZE_X = WIDTH/NB_CASES_X;
     public static final int CASE_SIZE_Y = HEIGHT/NB_CASES_Y;
     public static final int BUTTON_SIZE = 40;
-    public static final int PROB = 2;
+    public static final int PROB = 10;
 }
