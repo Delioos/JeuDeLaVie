@@ -20,7 +20,7 @@ public class Board {
         }
     }
 
-    public void clear(){
+    public void clear() {
         for (int i = 0; i < getXlength(); i++) {
             for (int j = 0; j < getYlength(); j++) {
                 this.grid[i][j] = false;
@@ -28,7 +28,6 @@ public class Board {
         }
         nbIter = 0;
     }
-
 
     // line to inverse a case : this.setGrid(i,j,!this.getGrid(x,y));
     public void evolve() {
@@ -40,7 +39,7 @@ public class Board {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 nb = 0;
-                //left
+                // left
                 if (i > 0 && this.grid[i - 1][j])
                     nb += 1;
                 // up left
@@ -66,11 +65,13 @@ public class Board {
                     nb += 1;
 
                 // application of Conway model
-                // une cellule morte possédant exactement trois cellules voisines vivantes devient vivante
+                // une cellule morte possédant exactement trois cellules voisines vivantes
+                // devient vivante
                 if (!this.grid[i][j]) {
                     newGrid[i][j] = nb == 3;
                 }
-                // une cellule vivante possédant deux ou trois cellules voisines vivantes le reste, sinon elle meurt
+                // une cellule vivante possédant deux ou trois cellules voisines vivantes le
+                // reste, sinon elle meurt
                 else {
                     newGrid[i][j] = nb == 2 || nb == 3;
                 }
@@ -94,16 +95,14 @@ public class Board {
 
     public void chargerCanon(String nom) throws IOException {
 
-        //ouverture des flux de lecture du fichier contenant le labyrinthe
+        // ouverture des flux de lecture du fichier contenant le labyrinthe
         BufferedReader br = new BufferedReader(new FileReader(nom));
-        int x = Integer.parseInt(br.readLine()); //nombre de colonnes
-        int y = Integer.parseInt(br.readLine()); //nombre de lignes
+        int x = Integer.parseInt(br.readLine()); // nombre de colonnes
+        int y = Integer.parseInt(br.readLine()); // nombre de lignes
 
-        //initialisation des variables du labyrinthe rendu
+        // initialisation des variables du labyrinthe rendu
         for (int i = 0; i < x; i++) {
             String ligne = br.readLine();
-            System.out.println(ligne);
-            System.out.println(i);
             for (int j = 0; j < y; j++) {
                 char c = ligne.charAt(j);
                 this.grid[j][i] = c == 'o';

@@ -20,27 +20,27 @@ public class View extends BorderPane {
     private GridPane gp;
     private HBox hb;
 
-    public View(Board b){
+    public View(Board b) {
         this.board = b;
         initGrid();
         initInfoBox();
     }
 
-    public void initGrid(){
+    public void initGrid() {
         this.gp = new GridPane();
         this.setCenter(gp);
         cases = new Rectangle[Constantes.NB_CASES_X][Constantes.NB_CASES_Y];
         for (int i = 0; i < this.board.getXlength(); i++) {
             for (int j = 0; j < this.board.getYlength(); j++) {
-                Rectangle r = new Rectangle(Constantes.CASE_SIZE_X,Constantes.CASE_SIZE_Y);
+                Rectangle r = new Rectangle(Constantes.CASE_SIZE_X, Constantes.CASE_SIZE_Y);
                 r.setFill(Color.WHITE);
-                this.gp.add(r,i,j);
+                this.gp.add(r, i, j);
                 cases[i][j] = r;
             }
         }
     }
 
-    public void initInfoBox(){
+    public void initInfoBox() {
         lbl = new Label("nb evol: 0");
         lbl.setAlignment(Pos.CENTER_LEFT);
         hb = new HBox();
@@ -48,27 +48,39 @@ public class View extends BorderPane {
         this.setBottom(hb);
 
         Button random = new Button("randomize");
-        random.setOnAction(new BtnRndmCTRL(this.board,this));
+        random.setOnAction(new BtnRndmCTRL(this.board, this));
         random.setMinHeight(Constantes.BUTTON_SIZE);
         Button gosperGliderGun = new Button("Gosper Glider Gun");
-        gosperGliderGun.setOnAction(new BtnCanonCTRL(this.board,this, "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\canonGosper.txt"));
+        gosperGliderGun.setOnAction(new BtnCanonCTRL(this.board, this,
+                "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\canonGosper.txt"));
         gosperGliderGun.setMinHeight(Constantes.BUTTON_SIZE);
         Button simkinGliderGun = new Button("Simkin Glider Gun");
-        simkinGliderGun.setOnAction(new BtnCanonCTRL(this.board,this, "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\SimkinGliderGun.txt"));
+        simkinGliderGun.setOnAction(new BtnCanonCTRL(this.board, this,
+                "D:\\Users\\Utilisateur\\Documents\\GitHub\\JeuDeLaVie\\resources\\SimkinGliderGun.txt"));
         simkinGliderGun.setMinHeight(Constantes.BUTTON_SIZE);
-        hb.getChildren().addAll(lbl,random,gosperGliderGun,simkinGliderGun);
+
+        // tets github copilot
+        // add a new button to reset the Board
+        Button reset = new Button("reset");
+        reset.setMinHeight(Constantes.BUTTON_SIZE);
+        reset.setOnAction(e -> {
+            this.board.clear();
+            this.update();
+        });
+        hb.getChildren().addAll(lbl, random, gosperGliderGun, simkinGliderGun, reset);
 
     }
-    public void update(){
+
+    public void update() {
         for (int i = 0; i < this.board.getXlength(); i++) {
             for (int j = 0; j < this.board.getYlength(); j++) {
-                if(this.board.getGrid(i,j))
+                if (this.board.getGrid(i, j))
                     cases[i][j].setFill(Color.BLACK);
                 else
                     cases[i][j].setFill(Color.WHITE);
             }
         }
         this.lbl.setText("nb evol: " + this.board.getNbIter());
-    this.requestFocus();
+        this.requestFocus();
     }
 }
